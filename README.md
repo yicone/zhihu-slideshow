@@ -36,7 +36,7 @@ wget --no-check-certificate -i files.txt
 思路：
 - 以限定网站为前提
 - 后端收到用户提交的网页地址，抓出图片地址
-- 异步下载图片到第三方图床
-- 用图床的图片地址，生成slideshow所需的json格式
+- 异步下载图片到本地
+- 用本地图片地址，生成slideshow所需的json格式
 - 处理好后邮件通知用户，附上slideshow的网址
-- 加些限制：如图片保存时间
+- 仅能自己用
