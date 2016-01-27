@@ -1,6 +1,8 @@
 # zhihu-slideshow
 
+
 A [Supersized](https://github.com/buildinternet/supersized) demo
+[演示地址](http://yicone.github.io/zhihu-slideshow/public/)
 
 ## 图片手工抓取的主要步骤
 
@@ -30,10 +32,10 @@ wget --no-check-certificate -i files.txt
 
 
 
-本来是想找一个网页工具，贴个网页地址进去，做些简单的设置，就能以slideshow这种比较好的交互形式，浏览图片。
+本来是想找一个以slideshow的方式，浏览指定网页上图片的网页工具。
 一时没找到，就先起了个草稿，在这个基础上，考虑工具如何实现
 
-思路：
+实现思路：
 - 以限定网站为前提
 - 后端收到用户提交的网页地址，抓出图片地址
 - 异步下载图片到本地
