@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<!--
+		Supersized - Fullscreen Slideshow jQuery Plugin
+		Version : 3.2.7
+		Site	: www.buildinternet.com/project/supersized
+		
+		Author	: Sam Dunn
+		Company : One Mighty Roar (www.onemightyroar.com)
+		License : MIT License / GPL License
+	-->
+
+	<head>
+
+		<title>Supersized - Full Screen Background Slideshow jQuery Plugin</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		
+		<link rel="stylesheet" href="css/supersized.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="theme/supersized.shutter.css" type="text/css" media="screen" />
+		
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+		
+		<script type="text/javascript" src="js/supersized.3.2.7.min.js"></script>
+		<script type="text/javascript" src="theme/supersized.shutter.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			jQuery(function($){
+				
+				$.supersized({
+				
+					// Functionality
+					slideshow               :   1,			// Slideshow on/off
+					autoplay				:	1,			// Slideshow starts playing automatically
+					start_slide             :   1,			// Start slide (0 is random)
+					stop_loop				:	0,			// Pauses slideshow on last slide
+					random					: 	0,			// Randomize slide order (Ignores start slide)
+					slide_interval          :   3000,		// Length between transitions
+					transition              :   6, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+					transition_speed		:	1000,		// Speed of transition
+					new_window				:	1,			// Image links open in new window/tab
+					pause_hover             :   0,			// Pause slideshow on hover
+					keyboard_nav            :   1,			// Keyboard navigation on/off
+					performance				:	2,			// 0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
+					image_protect			:	1,			// Disables image dragging and right click with Javascript
+															   
+					// Size & Position						   
+					min_width		        :   0,			// Min width allowed (in pixels)
+					min_height		        :   0,			// Min height allowed (in pixels)
+					vertical_center         :   1,			// Vertically center background
+					horizontal_center       :   1,			// Horizontally center background
+					fit_always				:	0,			// Image will never exceed browser width or height (Ignores min. dimensions)
+					fit_portrait         	:   1,			// Portrait images will not exceed browser height
+					fit_landscape			:   0,			// Landscape images will not exceed browser width
+															   
+					// Components							
+					slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
+					thumb_links				:	1,			// Individual thumb links for each slide
+					thumbnail_navigation    :   0,			// Thumbnail navigation
+					slides 					:  	[			// Slideshow Images
+														// {image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-1.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},
+														// {image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-2.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},  
+														// {image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-3.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},
+														// {image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-1.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-1.jpg', url : 'http://www.nonsensesociety.com/2011/03/colin/'},
+														// {image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-2.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-2.jpg', url : 'http://www.nonsensesociety.com/2011/03/colin/'},
+														// {image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-3.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg', url : 'http://www.nonsensesociety.com/2011/03/colin/'},
+														// {image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-1.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-1.jpg', url : 'http://www.nonsensesociety.com/2011/06/brooke-shaden/'},
+														// {image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-2.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-2.jpg', url : 'http://www.nonsensesociety.com/2011/06/brooke-shaden/'},
+														// {image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-3.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-3.jpg', url : 'http://www.nonsensesociety.com/2011/06/brooke-shaden/'}
+{image: 'images2/065d844fefb53d0d2860a1959972513a_r.jpg', thumb: 'images2/065d844fefb53d0d2860a1959972513a_200x112.jpg'},
+{image: 'images2/065d844fefb53d0d2860a1959972513a_r.jpg', thumb: 'images2/065d844fefb53d0d2860a1959972513a_b.jpg'},
+{image: 'images2/4aa8c993bb9e07aa9bcc1bcf4fde5cba_r.jpg', thumb: 'images2/4aa8c993bb9e07aa9bcc1bcf4fde5cba_b.jpg'},
+{image: 'images2/e410bde922fb2a52f9687b6db320c2fc_r.jpg', thumb: 'images2/e410bde922fb2a52f9687b6db320c2fc_b.jpg'},
+{image: 'images2/021a120f542348240ad518678345fc38_r.jpg', thumb: 'images2/021a120f542348240ad518678345fc38_b.jpg'},
+{image: 'images2/1b10efec155d96031a82ec800c902ad2_r.jpg', thumb: 'images2/1b10efec155d96031a82ec800c902ad2_b.jpg'},
+{image: 'images2/584e1fdf26bde75b4ea2c98ea1112f86_r.jpg', thumb: 'images2/584e1fdf26bde75b4ea2c98ea1112f86_b.jpg'},
+{image: 'images2/b83bafe61da2206d6fabe0f3a36b726d_r.jpg', thumb: 'images2/b83bafe61da2206d6fabe0f3a36b726d_b.jpg'},
+{image: 'images2/3e876c5ad45cf778bc89169ebf867ee6_r.jpg', thumb: 'images2/3e876c5ad45cf778bc89169ebf867ee6_b.jpg'},
+{image: 'images2/32b9d094b3628e5643b824291974a44a_r.jpg', thumb: 'images2/32b9d094b3628e5643b824291974a44a_b.jpg'},
+{image: 'images2/11d7b78ae9e96bca7f17a74963939d0e_r.jpg', thumb: 'images2/11d7b78ae9e96bca7f17a74963939d0e_b.jpg'},
+{image: 'images2/db785f51bbab553b61b35e3b92fcf564_r.jpg', thumb: 'images2/db785f51bbab553b61b35e3b92fcf564_b.jpg'},
+{image: 'images2/093c722edca1aef5ab99d347d2a7e956_r.jpg', thumb: 'images2/093c722edca1aef5ab99d347d2a7e956_b.jpg'},
+{image: 'images2/f03e6845b5bc85b4d1c066174b96f9eb_r.jpg', thumb: 'images2/f03e6845b5bc85b4d1c066174b96f9eb_b.jpg'},
+{image: 'images2/d75fb192039c79c227f0f22b722b4781_r.jpg', thumb: 'images2/d75fb192039c79c227f0f22b722b4781_200x112.jpg'},
+{image: 'images2/d75fb192039c79c227f0f22b722b4781_r.jpg', thumb: 'images2/d75fb192039c79c227f0f22b722b4781_b.jpg'},
+{image: 'images2/1a24c6b26fa376bb5468e97e40df3134_r.jpg', thumb: 'images2/1a24c6b26fa376bb5468e97e40df3134_b.jpg'},
+{image: 'images2/f195bdc1450e6340876ddd05ce31b107_r.jpg', thumb: 'images2/f195bdc1450e6340876ddd05ce31b107_b.jpg'},
+{image: 'images2/22278741c4d99069a879a7bfd5b39990_r.jpg', thumb: 'images2/22278741c4d99069a879a7bfd5b39990_b.jpg'},
+{image: 'images2/21128df31f7d27753a51c11924b76e52_r.jpg', thumb: 'images2/21128df31f7d27753a51c11924b76e52_b.jpg'},
+{image: 'images2/caccd2d1e9863c7957e35a90eda9e1c0_r.jpg', thumb: 'images2/caccd2d1e9863c7957e35a90eda9e1c0_b.jpg'},
+{image: 'images2/279eaa128b26cdf3870d82f9b182f57d_r.jpg', thumb: 'images2/279eaa128b26cdf3870d82f9b182f57d_b.jpg'},
+{image: 'images2/073e3d7d0752dc48de09100317d4382b_r.jpg', thumb: 'images2/073e3d7d0752dc48de09100317d4382b_b.jpg'},
+{image: 'images2/93cbc67b0009e5206cf41def40c8cea5_r.jpg', thumb: 'images2/93cbc67b0009e5206cf41def40c8cea5_b.jpg'},
+{image: 'images2/b5538924800acd2340e232da44e0349e_r.jpg', thumb: 'images2/b5538924800acd2340e232da44e0349e_b.jpg'},
+{image: 'images2/89f5e7eff0fd85c25e355591c78dfde1_r.png', thumb: 'images2/89f5e7eff0fd85c25e355591c78dfde1_200x112.png'},
+{image: 'images2/89f5e7eff0fd85c25e355591c78dfde1_r.png', thumb: 'images2/89f5e7eff0fd85c25e355591c78dfde1_b.png'},
+{image: 'images2/e8999947e4aefc4c662613b59a259d4d_r.png', thumb: 'images2/e8999947e4aefc4c662613b59a259d4d_b.png'},
+{image: 'images2/547450600eea55bba668eea0f81c9a72_r.png', thumb: 'images2/547450600eea55bba668eea0f81c9a72_b.png'},
+{image: 'images2/29074f86b485c3fdbdff4cd273e24e0a_r.png', thumb: 'images2/29074f86b485c3fdbdff4cd273e24e0a_b.png'},
+{image: 'images2/d3e883205444b2617e3562f13869da4f_r.png', thumb: 'images2/d3e883205444b2617e3562f13869da4f_b.png'},
+{image: 'images2/5f7e9c78faf22de1e2f3a06356de429e_r.png', thumb: 'images2/5f7e9c78faf22de1e2f3a06356de429e_b.png'},
+{image: 'images2/95f5e9db600b528c2efa922dfd20a86f_r.png', thumb: 'images2/95f5e9db600b528c2efa922dfd20a86f_b.png'},
+{image: 'images2/52f48f7bbe28e3ebb2446ec517361030_r.png', thumb: 'images2/52f48f7bbe28e3ebb2446ec517361030_b.png'},
+{image: 'images2/e59f01d73c83d0e9863b31b54da6f110_r.png', thumb: 'images2/e59f01d73c83d0e9863b31b54da6f110_b.png'},
+{image: 'images2/9c9ed174cf154dd6cab6df8fc87f9eea_r.png', thumb: 'images2/9c9ed174cf154dd6cab6df8fc87f9eea_b.png'},
+{image: 'images2/62de59bbdcc9ca8b605ac25ac5da724d_r.png', thumb: 'images2/62de59bbdcc9ca8b605ac25ac5da724d_b.png'},
+{image: 'images2/515767993a5f8b66b090e940d67891e8_r.png', thumb: 'images2/515767993a5f8b66b090e940d67891e8_b.png'},
+{image: 'images2/a96ae52fe68fdaf5bdb368104207f807_r.png', thumb: 'images2/a96ae52fe68fdaf5bdb368104207f807_b.png'},
+{image: 'images2/e6749adb45e85128dd11f8486fb44252_r.png', thumb: 'images2/e6749adb45e85128dd11f8486fb44252_b.png'},
+{image: 'images2/c9793a3cbe817c36beaf6e99f0ea9a92_r.png', thumb: 'images2/c9793a3cbe817c36beaf6e99f0ea9a92_b.png'},
+{image: 'images2/92556fa58789f2fc869e3d0c5341ed05_r.png', thumb: 'images2/92556fa58789f2fc869e3d0c5341ed05_b.png'},
+{image: 'images2/2f031346900b58b26e177bd676d3ed34_r.png', thumb: 'images2/2f031346900b58b26e177bd676d3ed34_b.png'},
+{image: 'images2/01666b3e8b2e4764d321b0e6188280b7_r.png', thumb: 'images2/01666b3e8b2e4764d321b0e6188280b7_b.png'},
+{image: 'images2/b2058c8d2b803c7492a4d0193455d719_r.png', thumb: 'images2/b2058c8d2b803c7492a4d0193455d719_b.png'},
+{image: 'images2/4e35e4fda42b44a943cd6e36982fa47b_r.png', thumb: 'images2/4e35e4fda42b44a943cd6e36982fa47b_b.png'},
+{image: 'images2/0a6f841a4aab2500f669bbcf00c59ec9_r.png', thumb: 'images2/0a6f841a4aab2500f669bbcf00c59ec9_b.png'},
+{image: 'images2/fd7c0721b6381706c4bda7ea2b627551_r.png', thumb: 'images2/fd7c0721b6381706c4bda7ea2b627551_b.png'},
+{image: 'images2/036316298276c2d77f18a97edbf26cce_r.png', thumb: 'images2/036316298276c2d77f18a97edbf26cce_b.png'},
+{image: 'images2/eb521b917ed80f2ad04551661f9f76c5_r.png', thumb: 'images2/eb521b917ed80f2ad04551661f9f76c5_b.png'},
+{image: 'images2/b5286e6702f5fe53eec651725e5932be_r.png', thumb: 'images2/b5286e6702f5fe53eec651725e5932be_b.png'},
+{image: 'images2/6edcb85a15724544c74e1d277cae47d5_r.png', thumb: 'images2/6edcb85a15724544c74e1d277cae47d5_b.png'},
+{image: 'images2/5c9cca43d79a7249896904c55855d9ef_r.png', thumb: 'images2/5c9cca43d79a7249896904c55855d9ef_b.png'},
+{image: 'images2/68ef15e976515ee521200701dd0f8664_r.png', thumb: 'images2/68ef15e976515ee521200701dd0f8664_b.png'},
+{image: 'images2/3e60522b53a24696a8df10d5c37717e7_r.png', thumb: 'images2/3e60522b53a24696a8df10d5c37717e7_b.png'},
+{image: 'images2/20ebb15cf8cfb4168eddb0005745c4a0_r.png', thumb: 'images2/20ebb15cf8cfb4168eddb0005745c4a0_b.png'},
+{image: 'images2/364bc7f53b38e38ad0b1bfaa421710ea_r.png', thumb: 'images2/364bc7f53b38e38ad0b1bfaa421710ea_b.png'},
+{image: 'images2/1219da2fd9bbb42f7d3a795aa86f0ec6_r.png', thumb: 'images2/1219da2fd9bbb42f7d3a795aa86f0ec6_b.png'},
+{image: 'images2/90dfe156976b26497c13972bc03fabc3_r.png', thumb: 'images2/90dfe156976b26497c13972bc03fabc3_b.png'},
+{image: 'images2/086b4684673e323e0dbbba022f566a54_r.png', thumb: 'images2/086b4684673e323e0dbbba022f566a54_b.png'},
+{image: 'images2/984d3bf1cc89a58bf66ef094ab7f1502_r.png', thumb: 'images2/984d3bf1cc89a58bf66ef094ab7f1502_b.png'},
+{image: 'images2/41a9edf7278ee382f6918bf60443dadb_r.png', thumb: 'images2/41a9edf7278ee382f6918bf60443dadb_b.png'},
+{image: 'images2/9ea8f73ce196b0702000e6ac399ef21a_r.png', thumb: 'images2/9ea8f73ce196b0702000e6ac399ef21a_b.png'},
+{image: 'images2/b4fd9ed57de2988634b383221c29023a_r.png', thumb: 'images2/b4fd9ed57de2988634b383221c29023a_b.png'},
+{image: 'images2/c945033b17fde2cccb7537ebb9f92671_r.png', thumb: 'images2/c945033b17fde2cccb7537ebb9f92671_b.png'},
+{image: 'images2/f4dcd222ce8ca953805b6512e4928ce6_r.png', thumb: 'images2/f4dcd222ce8ca953805b6512e4928ce6_b.png'},
+{image: 'images2/cd7edf2be885dc25ce3683e637b76f4d_r.png', thumb: 'images2/cd7edf2be885dc25ce3683e637b76f4d_b.png'},
+{image: 'images2/3ad590f5e45ae37bf2f846b5b29473e9_r.png', thumb: 'images2/3ad590f5e45ae37bf2f846b5b29473e9_b.png'},
+{image: 'images2/ebb8341201e266861573e2e2f5ce32f2_r.png', thumb: 'images2/ebb8341201e266861573e2e2f5ce32f2_b.png'},
+{image: 'images2/89959341fc95e39abd353d618e248d19_r.png', thumb: 'images2/89959341fc95e39abd353d618e248d19_b.png'},
+{image: 'images2/1a9b75d21368273ff9b97c39ebb9b7e2_r.png', thumb: 'images2/1a9b75d21368273ff9b97c39ebb9b7e2_b.png'},
+{image: 'images2/6f53cea79389a6c0144c6f502923b8d0_r.png', thumb: 'images2/6f53cea79389a6c0144c6f502923b8d0_b.png'},
+{image: 'images2/eee59afec053bf2aa648f2191a5dea5f_r.png', thumb: 'images2/eee59afec053bf2aa648f2191a5dea5f_b.png'},
+{image: 'images2/da9614c8a39ba56064f6c89dae1a28f7_r.png', thumb: 'images2/da9614c8a39ba56064f6c89dae1a28f7_b.png'},
+{image: 'images2/ffe0aca443e3cbf11e0301ab965e0148_r.png', thumb: 'images2/ffe0aca443e3cbf11e0301ab965e0148_b.png'},
+{image: 'images2/99d5851bf110d43b6627ba8afea7eb57_r.png', thumb: 'images2/99d5851bf110d43b6627ba8afea7eb57_b.png'},
+{image: 'images2/5e3bf66340e67d199448313b0afa3829_r.png', thumb: 'images2/5e3bf66340e67d199448313b0afa3829_b.png'},
+{image: 'images2/ac1f1b6e8af4a36fe94961080b11527c_r.jpeg', thumb: 'images2/ac1f1b6e8af4a36fe94961080b11527c_200x112.jpeg'},
+{image: 'images2/ac1f1b6e8af4a36fe94961080b11527c_r.jpeg', thumb: 'images2/ac1f1b6e8af4a36fe94961080b11527c_b.jpeg'},
+{image: 'images2/7e0d268c1deda5f8cd9e3b1388920f5c_r.jpeg', thumb: 'images2/7e0d268c1deda5f8cd9e3b1388920f5c_b.jpeg'},
+{image: 'images2/8dfe9212ce284c73714143d934f4779f_r.jpeg', thumb: 'images2/8dfe9212ce284c73714143d934f4779f_b.jpeg'},
+{image: 'images2/8ca65bdb5c8b66b13a08e3209d05ccb9_r.jpeg', thumb: 'images2/8ca65bdb5c8b66b13a08e3209d05ccb9_b.jpeg'},
+{image: 'images2/bbc594c6ddd5b20957eb6ae62c90856f_r.jpeg', thumb: 'images2/bbc594c6ddd5b20957eb6ae62c90856f_b.jpeg'},
+{image: 'images2/d19c5ede331948af2e36e7d6d16f0aca_r.jpeg', thumb: 'images2/d19c5ede331948af2e36e7d6d16f0aca_b.jpeg'},
+{image: 'images2/9a7a716c13666711c247f55897f31d96_r.jpeg', thumb: 'images2/9a7a716c13666711c247f55897f31d96_b.jpeg'},
+{image: 'images2/4898e7d3335b33bc49e3d2daee41694b_r.jpeg', thumb: 'images2/4898e7d3335b33bc49e3d2daee41694b_b.jpeg'},
+{image: 'images2/c69e73aed41b6f8e269065963bd76d04_r.jpeg', thumb: 'images2/c69e73aed41b6f8e269065963bd76d04_b.jpeg'},
+{image: 'images2/6f66b8f34fcce125323db213b719653b_r.jpeg', thumb: 'images2/6f66b8f34fcce125323db213b719653b_b.jpeg'},
+{image: 'images2/e9a8268e80ec159be7537caad50fd32c_r.jpeg', thumb: 'images2/e9a8268e80ec159be7537caad50fd32c_b.jpeg'},
+{image: 'images2/8d8fba6ded0d2da798254a5c11d5431d_r.jpeg', thumb: 'images2/8d8fba6ded0d2da798254a5c11d5431d_b.jpeg'},
+{image: 'images2/c1befc198cd5ca3c6d0357e9bfb5250d_r.jpeg', thumb: 'images2/c1befc198cd5ca3c6d0357e9bfb5250d_b.jpeg'},
+{image: 'images2/3a0f80d5f48abea7580510ab3af8e03d_r.jpeg', thumb: 'images2/3a0f80d5f48abea7580510ab3af8e03d_b.jpeg'},
+{image: 'images2/cca248f9e94b45979476986bd0888fd5_r.jpeg', thumb: 'images2/cca248f9e94b45979476986bd0888fd5_b.jpeg'},
+{image: 'images2/654c29a1e8bb4df9e946975a38f3511a_r.jpeg', thumb: 'images2/654c29a1e8bb4df9e946975a38f3511a_b.jpeg'},
+{image: 'images2/257c4cfc117d138785e7ec2cf5e96ff8_r.jpeg', thumb: 'images2/257c4cfc117d138785e7ec2cf5e96ff8_b.jpeg'},
+{image: 'images2/e1052f986b91959ba08704bf9ec431fb_r.jpeg', thumb: 'images2/e1052f986b91959ba08704bf9ec431fb_b.jpeg'},
+{image: 'images2/84e181467668c906c09df316e99afd44_r.jpeg', thumb: 'images2/84e181467668c906c09df316e99afd44_b.jpeg'},
+{image: 'images2/4a4a0edf0e6f1dd78199855abede1b7d_r.jpeg', thumb: 'images2/4a4a0edf0e6f1dd78199855abede1b7d_b.jpeg'},
+{image: 'images2/73e4b773fff4b4cbd526c089c644e741_r.jpeg', thumb: 'images2/73e4b773fff4b4cbd526c089c644e741_b.jpeg'},
+{image: 'images2/3c9da8e6879e23bcda62189f5bd1cfeb_r.jpeg', thumb: 'images2/3c9da8e6879e23bcda62189f5bd1cfeb_b.jpeg'},
+{image: 'images2/668c0092ce384088a0337a87c0b3e991_r.jpeg', thumb: 'images2/668c0092ce384088a0337a87c0b3e991_b.jpeg'},
+{image: 'images2/1f84b9ce88b42c3cd36cbea23c1bd44d_r.jpeg', thumb: 'images2/1f84b9ce88b42c3cd36cbea23c1bd44d_b.jpeg'},
+{image: 'images2/1a3d32c26f48cfaaeb181372c234f95d_r.jpeg', thumb: 'images2/1a3d32c26f48cfaaeb181372c234f95d_b.jpeg'},
+{image: 'images2/8effba24abc46e6f2e0b22f2efd05e5a_r.jpeg', thumb: 'images2/8effba24abc46e6f2e0b22f2efd05e5a_b.jpeg'},
+{image: 'images2/5aaf829d416494013aa970e704e6387f_r.jpeg', thumb: 'images2/5aaf829d416494013aa970e704e6387f_b.jpeg'},
+{image: 'images2/3ecb016d6b8f21842780dfd4e9a800c5_r.jpeg', thumb: 'images2/3ecb016d6b8f21842780dfd4e9a800c5_b.jpeg'},
+{image: 'images2/0a8191515b8024434f6057a9b8aaae18_r.jpeg', thumb: 'images2/0a8191515b8024434f6057a9b8aaae18_b.jpeg'},
+{image: 'images2/ce4256c1ef3dcd204cae228d6779bb8c_r.jpeg', thumb: 'images2/ce4256c1ef3dcd204cae228d6779bb8c_b.jpeg'},
+{image: 'images2/419b46516edaa39c24802eb8d0deff81_r.jpeg', thumb: 'images2/419b46516edaa39c24802eb8d0deff81_b.jpeg'},
+{image: 'images2/0dcfdc8e4000a9dfcb7cf1091e9c3ab6_r.jpeg', thumb: 'images2/0dcfdc8e4000a9dfcb7cf1091e9c3ab6_b.jpeg'},
+{image: 'images2/ac250825d0b99af42bf016af013d8b9d_r.jpeg', thumb: 'images2/ac250825d0b99af42bf016af013d8b9d_b.jpeg'},
+{image: 'images2/a70e78006e6d950e9423ee24c93ead69_r.jpeg', thumb: 'images2/a70e78006e6d950e9423ee24c93ead69_b.jpeg'},
+{image: 'images2/b894a8c75890d203d0587a080d790cac_r.jpg', thumb: 'images2/b894a8c75890d203d0587a080d790cac_200x112.jpg'},
+{image: 'images2/b894a8c75890d203d0587a080d790cac_r.jpg', thumb: 'images2/b894a8c75890d203d0587a080d790cac_b.jpg'},
+{image: 'images2/a09146d5d89265f3acb51d8530eb40de_r.jpg', thumb: 'images2/a09146d5d89265f3acb51d8530eb40de_200x112.jpg'},
+{image: 'images2/a09146d5d89265f3acb51d8530eb40de_r.jpg', thumb: 'images2/a09146d5d89265f3acb51d8530eb40de_b.jpg'},
+{image: 'images2/76b03d35c5cb6b02fff53cf89086038f_r.jpg', thumb: 'images2/76b03d35c5cb6b02fff53cf89086038f_b.jpg'},
+{image: 'images2/c97f93bc71e179fd60d3607357532dc0_r.jpg', thumb: 'images2/c97f93bc71e179fd60d3607357532dc0_b.jpg'},
+{image: 'images2/91d9451c5f7050970bc10b0b2c6e55fe_r.jpg', thumb: 'images2/91d9451c5f7050970bc10b0b2c6e55fe_b.jpg'},
+{image: 'images2/4d682578d65bdd27df82866707f611d0_r.jpg', thumb: 'images2/4d682578d65bdd27df82866707f611d0_b.jpg'},
+{image: 'images2/979d75be038c313eacf103db3a3bec6c_r.jpg', thumb: 'images2/979d75be038c313eacf103db3a3bec6c_b.jpg'},
+{image: 'images2/d1de0586ebae2f6a9172ac1e379e6288_r.jpg', thumb: 'images2/d1de0586ebae2f6a9172ac1e379e6288_b.jpg'},
+{image: 'images2/0ed00ebd56aa6b2da8e0ace97e2c809d_r.jpg', thumb: 'images2/0ed00ebd56aa6b2da8e0ace97e2c809d_b.jpg'},
+{image: 'images2/6e14fc087f244f6e5686b00df2c29fa8_r.jpg', thumb: 'images2/6e14fc087f244f6e5686b00df2c29fa8_b.jpg'},
+{image: 'images2/b332cd05f999b0a7b2921304eab2b1bb_r.jpg', thumb: 'images2/b332cd05f999b0a7b2921304eab2b1bb_b.jpg'},
+{image: 'images2/1b18249bc48a07e8b3251ccba3cbe36d_r.jpg', thumb: 'images2/1b18249bc48a07e8b3251ccba3cbe36d_b.jpg'},
+{image: 'images2/8f97795e9f44c1b627f1c2a2fccc8bde_r.jpg', thumb: 'images2/8f97795e9f44c1b627f1c2a2fccc8bde_200x112.jpg'},
+{image: 'images2/8f97795e9f44c1b627f1c2a2fccc8bde_r.jpg', thumb: 'images2/8f97795e9f44c1b627f1c2a2fccc8bde_b.jpg'},
+{image: 'images2/f489c075d447565083a2cafdfcb6b385_r.jpeg', thumb: 'images2/f489c075d447565083a2cafdfcb6b385_200x112.jpeg'},
+{image: 'images2/fa2edcdb3053a7d9b05461ffd7510b59_r.jpg', thumb: 'images2/fa2edcdb3053a7d9b05461ffd7510b59_200x112.jpg'},
+{image: 'images2/75d1c1775e94ab2b0fe61c20f950752c_r.jpg', thumb: 'images2/75d1c1775e94ab2b0fe61c20f950752c_200x112.jpg'},
+{image: 'images2/75d1c1775e94ab2b0fe61c20f950752c_r.jpg', thumb: 'images2/75d1c1775e94ab2b0fe61c20f950752c_b.jpg'},
+{image: 'images2/a902ff20761201fdb624e9cd376f77e7_r.jpg', thumb: 'images2/a902ff20761201fdb624e9cd376f77e7_200x112.jpg'},
+{image: 'images2/cf248c57f93fc023a6aa443b176a343a_r.jpg', thumb: 'images2/cf248c57f93fc023a6aa443b176a343a_200x112.jpg'},
+{image: 'images2/33f33ec92a6cd02e466c90c174501fd7_r.jpg', thumb: 'images2/33f33ec92a6cd02e466c90c174501fd7_200x112.jpg'},
+{image: 'images2/33f33ec92a6cd02e466c90c174501fd7_r.jpg', thumb: 'images2/33f33ec92a6cd02e466c90c174501fd7_b.jpg'},
+{image: 'images2/314e9d1ccefc42172f6704cc5e348c0f_r.jpg', thumb: 'images2/314e9d1ccefc42172f6704cc5e348c0f_b.jpg'},
+{image: 'images2/0bb2535aac2864a962c3ae84317f8d2d_r.jpg', thumb: 'images2/0bb2535aac2864a962c3ae84317f8d2d_b.jpg'},
+{image: 'images2/32022b3792dd4e3319bf8af43107151e_r.jpg', thumb: 'images2/32022b3792dd4e3319bf8af43107151e_b.jpg'},
+{image: 'images2/08549dcef9737505d4e0fb4ef498ddd6_r.png', thumb: 'images2/08549dcef9737505d4e0fb4ef498ddd6_b.png'},
+{image: 'images2/2c36c8344f81efeb34148ee0179fd435_r.png', thumb: 'images2/2c36c8344f81efeb34148ee0179fd435_b.png'},
+{image: 'images2/20d772ef7bda59eac0e48cc196e2a4a1_r.jpg', thumb: 'images2/20d772ef7bda59eac0e48cc196e2a4a1_b.jpg'},
+{image: 'images2/91baabe072592bea2d094bfe07ad7bed_r.jpg', thumb: 'images2/91baabe072592bea2d094bfe07ad7bed_b.jpg'},
+{image: 'images2/c14964b2ac8e92a506aa7ac913e4415e_r.jpg', thumb: 'images2/c14964b2ac8e92a506aa7ac913e4415e_b.jpg'},
+{image: 'images2/d19ae8e4333482fd9785f286168d3a44_r.jpg', thumb: 'images2/d19ae8e4333482fd9785f286168d3a44_b.jpg'},
+{image: 'images2/959a4dea3d53df06c9b9ba768b88f24b_r.jpg', thumb: 'images2/959a4dea3d53df06c9b9ba768b88f24b_b.jpg'},
+{image: 'images2/e5fa5c4739ecac8e43d177486edd238a_r.jpg', thumb: 'images2/e5fa5c4739ecac8e43d177486edd238a_b.jpg'},
+{image: 'images2/b93e02664f3a347353cf1c8de4ff62b5_r.jpg', thumb: 'images2/b93e02664f3a347353cf1c8de4ff62b5_b.jpg'},
+{image: 'images2/935ab48a45dc29fb0b69752b8acce7e1_r.jpg', thumb: 'images2/935ab48a45dc29fb0b69752b8acce7e1_b.jpg'},
+{image: 'images2/56d3c8c682b245c0b06b906b83595204_r.jpg', thumb: 'images2/56d3c8c682b245c0b06b906b83595204_b.jpg'},
+{image: 'images2/6f9fe35c6ee49bdac2330e4b5dbda75e_r.png', thumb: 'images2/6f9fe35c6ee49bdac2330e4b5dbda75e_200x112.png'},
+{image: 'images2/6f9fe35c6ee49bdac2330e4b5dbda75e_r.png', thumb: 'images2/6f9fe35c6ee49bdac2330e4b5dbda75e_b.png'},
+{image: 'images2/1cede7744241049982a0bc5eae1e41f2_r.jpg', thumb: 'images2/1cede7744241049982a0bc5eae1e41f2_b.jpg'},
+{image: 'images2/5613ef4aa02b7dc3b4332c403f4a4102_r.jpg', thumb: 'images2/5613ef4aa02b7dc3b4332c403f4a4102_b.jpg'},
+{image: 'images2/0b9dcec10d829b6a2b82b45b3d16995d_r.jpg', thumb: 'images2/0b9dcec10d829b6a2b82b45b3d16995d_b.jpg'},
+{image: 'images2/e066f1a76890f701289b674ceb446392_r.jpg', thumb: 'images2/e066f1a76890f701289b674ceb446392_b.jpg'},
+{image: 'images2/c40040544fdeb8dd7767d0e07f93bfaa_r.jpg', thumb: 'images2/c40040544fdeb8dd7767d0e07f93bfaa_b.jpg'},
+{image: 'images2/14cfd63944d52be58c6c1042e0646efd_r.jpg', thumb: 'images2/14cfd63944d52be58c6c1042e0646efd_b.jpg'},
+{image: 'images2/51a7bbb5588e33e825cd0937b29a6841_r.jpg', thumb: 'images2/51a7bbb5588e33e825cd0937b29a6841_b.jpg'},
+{image: 'images2/45f5328e43384b3b31691a77464ea038_r.jpg', thumb: 'images2/45f5328e43384b3b31691a77464ea038_b.jpg'},
+{image: 'images2/d6abb7e5ace36509520d760767e56f62_r.jpg', thumb: 'images2/d6abb7e5ace36509520d760767e56f62_b.jpg'},
+{image: 'images2/90c0cf6d3ecb322f8f507398734f0c4f_r.jpg', thumb: 'images2/90c0cf6d3ecb322f8f507398734f0c4f_b.jpg'},
+{image: 'images2/4b44f92cad4fa66a7a96d445b198c3cb_r.jpg', thumb: 'images2/4b44f92cad4fa66a7a96d445b198c3cb_b.jpg'},
+{image: 'images2/0c2083ced0578a039c29df261edb2462_r.jpg', thumb: 'images2/0c2083ced0578a039c29df261edb2462_b.jpg'},
+{image: 'images2/37a58dff9f21f6d7aa31ca531b3f631b_r.jpg', thumb: 'images2/37a58dff9f21f6d7aa31ca531b3f631b_b.jpg'},
+{image: 'images2/787b30f493c929e5490915d92654b3f3_r.jpg', thumb: 'images2/787b30f493c929e5490915d92654b3f3_b.jpg'},
+{image: 'images2/0e725cc4f1a2beedf5fec9fb14691033_r.jpg', thumb: 'images2/0e725cc4f1a2beedf5fec9fb14691033_b.jpg'},
+{image: 'images2/fde44a0461f2e6a0f64cfeef07411898_r.jpg', thumb: 'images2/fde44a0461f2e6a0f64cfeef07411898_200x112.jpg'},
+{image: 'images2/fde44a0461f2e6a0f64cfeef07411898_r.jpg', thumb: 'images2/fde44a0461f2e6a0f64cfeef07411898_b.jpg'},
+{image: 'images2/26552183272861db7bc6eb40073fecf2_r.png', thumb: 'images2/26552183272861db7bc6eb40073fecf2_200x112.png'},
+{image: 'images2/26552183272861db7bc6eb40073fecf2_r.png', thumb: 'images2/26552183272861db7bc6eb40073fecf2_b.png'}
+												],
+												
+					// Theme Options			   
+					progress_bar			:	1,			// Timer for each slide							
+					mouse_scrub				:	0
+					
+				});
+		    });
+		    
+		</script>
+		
+	</head>
+	
+	<style type="text/css">
+		ul#demo-block{ margin:0 15px 15px 15px; }
+			ul#demo-block li{ margin:0 0 10px 0; padding:10px; display:inline; float:left; clear:both; color:#aaa; background:url('img/bg-black.png'); font:11px Helvetica, Arial, sans-serif; }
+			ul#demo-block li a{ color:#eee; font-weight:bold; }
+
+		ul#slide-list {margin-right:50px;}
+
+		#supersized {bottom:40px; height:auto;}
+	</style>
+
+<body>
+
+	<!--Demo styles (you can delete this block)-->
+	<!-- 
+	<ul id="demo-block">
+		<li><a href="http://buildinternet.com/project/supersized/" target="_blank"><img src="img/supersized-logo.png"/></a></li>
+		<li>Photographers: <a href="http://cargocollective.com/mariakazvan" target="_blank">Maria Kazvan</a>, <a href="http://colindub.com" target="_blank">Colin Wojno</a>, &amp; <a href="http://brookeshaden.com/" target="_blank">Brooke Shaden</a></li>
+	</ul> -->
+	
+	<!--End of styles-->
+
+	<!--Thumbnail Navigation-->
+	<div id="prevthumb"></div>
+	<div id="nextthumb"></div>
+	
+	<!--Arrow Navigation-->
+	<a id="prevslide" class="load-item"></a>
+	<a id="nextslide" class="load-item"></a>
+	
+	<div id="thumb-tray" class="load-item">
+		<div id="thumb-back"></div>
+		<div id="thumb-forward"></div>
+	</div>
+	
+	<!--Time Bar-->
+	<div id="progress-back" class="load-item">
+		<div id="progress-bar"></div>
+	</div>
+	
+	<!--Control Bar-->
+	<div id="controls-wrapper" class="load-item">
+		<div id="controls">
+			
+			<a id="play-button"><img id="pauseplay" src="img/pause.png"/></a>
+		
+			<!--Slide counter-->
+			<div id="slidecounter">
+				<span class="slidenumber"></span> / <span class="totalslides"></span>
+			</div>
+			
+			<!--Slide captions displayed here-->
+			<div id="slidecaption"></div>
+			
+			<!--Thumb Tray button-->
+			<a id="tray-button"><img id="tray-arrow" src="img/button-tray-up.png"/></a>
+			
+			<!--Navigation-->
+			<ul id="slide-list"></ul>
+			
+		</div>
+	</div>
+
+</body>
+</html>
